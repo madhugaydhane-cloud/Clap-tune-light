@@ -24,7 +24,7 @@ export function ProductCard({ product }: Props) {
           <img
             src={product.images[0]}
             alt={product.name}
-            className="h-full w-full object-cover transition duration-500 group-hover:scale-105 group-hover:brightness-110"
+            className="h-full w-full object-contain p-4 transition duration-500 group-hover:scale-105 group-hover:brightness-110"
           />
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(244,182,91,0.18),transparent_55%)] opacity-0 transition group-hover:opacity-100" />
           {discount > 0 ? (

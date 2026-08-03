@@ -1,8 +1,11 @@
 import type { Product } from '../types'
 import { DEFAULT_TEMPERATURES } from '../utils/lighting'
-import mushroomOrange from '../assets/lamps/mushroom-orange.png'
-import pleatedPendant from '../assets/lamps/pleated-pendant.png'
-import sculpturalWood from '../assets/lamps/sculptural-wood.png'
+
+const PHOTO = {
+  mushroomOrange: '/lamps/mushroom-orange.jpg',
+  pleatedPendant: '/lamps/pleated-pendant.jpg',
+  sculpturalWood: '/lamps/sculptural-wood.jpg',
+} as const
 
 const finishes = [
   { id: 'matte-black', name: 'Matte Black', color: '#1A1A1A' },
@@ -74,7 +77,7 @@ export const products: Product[] = [
     description:
       'A glossy orange mushroom lamp with a sculpted dimpled shade and tapered pedestal. Soft diffused light for living rooms, nightstands, and statement corners.',
     shortDescription: 'Glossy orange mushroom glow with retro-modern charm.',
-    images: [mushroomOrange, mushroomOrange],
+    images: [PHOTO.mushroomOrange, PHOTO.mushroomOrange],
     modelPath: null,
     colours: finishes.filter((f) => ['terracotta', 'ivory', 'matte-black'].includes(f.id)),
     materials: ['Gloss Polycarbonate', 'Acrylic'],
@@ -123,7 +126,7 @@ export const products: Product[] = [
     description:
       'A cream pleated pendant with a scalloped edge and warm wood canopy. Ideal above dining tables and kitchen islands where soft, atmospheric light matters.',
     shortDescription: 'Pleated cream pendant with organic scalloped edges.',
-    images: [pleatedPendant, pleatedPendant],
+    images: [PHOTO.pleatedPendant, PHOTO.pleatedPendant],
     modelPath: null,
     colours: finishes.filter((f) => ['ivory', 'walnut', 'matte-black'].includes(f.id)),
     materials: ['Pleated Fabric', 'Turned Wood', 'Metal Hardware'],
@@ -174,7 +177,7 @@ export const products: Product[] = [
     description:
       'An organic wooden base carved in a flowing wave form, topped with a soft cream drum shade. A calm, sculptural piece for bedrooms and reading corners.',
     shortDescription: 'Sculptural wood base with a soft cream drum shade.',
-    images: [sculpturalWood, sculpturalWood],
+    images: [PHOTO.sculpturalWood, PHOTO.sculpturalWood],
     modelPath: null,
     colours: finishes.filter((f) => ['walnut', 'ivory', 'matte-black'].includes(f.id)),
     materials: ['Solid Wood', 'Linen Shade'],
