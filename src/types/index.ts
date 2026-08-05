@@ -1,136 +1,102 @@
-export type ProductCategory =
-  | 'Table Lamps'
-  | 'Floor Lamps'
-  | 'Pendant Lights'
-  | 'Wall Lights'
-  | 'Desk Lamps'
-  | 'Smart Lamps'
+export type MoodType =
+  | 'happy'
+  | 'calm'
+  | 'excited'
+  | 'tired'
+  | 'stressed'
+  | 'sad'
 
-export type RoomType =
-  | 'Modern Living Room'
-  | 'Minimal Bedroom'
-  | 'Study Room'
-  | 'Reading Corner'
-  | 'Dining Space'
+export type GrowthRewardType =
+  | 'flower'
+  | 'leaf'
+  | 'glowing-bud'
+  | 'evening'
+  | 'breathing'
+  | 'raindrop'
 
-export type LightTemperature = {
+export type UnlockCategory =
+  | 'leaves'
+  | 'flowers'
+  | 'buds'
+  | 'pots'
+  | 'backgrounds'
+  | 'companions'
+
+export type NavTab = 'garden' | 'history' | 'insights' | 'profile'
+
+export interface User {
   id: string
+  name: string
+  gardenName: string
+  reminderTime: string
+  onboardingCompleted: boolean
+  createdAt: string
+}
+
+export interface MoodEntry {
+  id: string
+  mood: MoodType
+  note: string
+  voiceNoteUrl: string | null
+  createdAt: string
+  growthReward: GrowthRewardType
+  reflectionPrompt: string
+}
+
+export interface PlantElement {
+  id: string
+  type: GrowthRewardType
+  mood: MoodType
+  createdAt: string
+  index: number
+}
+
+export interface GardenState {
+  plantLevel: number
+  totalCheckIns: number
+  currentStreak: number
+  longestStreak: number
+  unlockedItems: string[]
+  selectedPot: string
+  selectedBackground: string
+  plantElements: PlantElement[]
+  lastCheckInDate: string | null
+}
+
+export interface Settings {
+  soundEnabled: boolean
+  animationsEnabled: boolean
+  darkMode: boolean
+  remindersEnabled: boolean
+}
+
+export interface MoodConfig {
+  id: MoodType
   label: string
-  kelvin: number
+  emoji: string
+  phrase: string
   color: string
+  bgClass: string
+  textClass: string
+  borderClass: string
+  growthReward: GrowthRewardType
+  growthLabel: string
+  reactionMessage: string
 }
 
-export type FinishOption = {
+export interface UnlockableItem {
   id: string
   name: string
-  color: string
-}
-
-export type ProductReview = {
-  id: string
-  author: string
-  rating: number
-  title: string
-  body: string
-  date: string
-}
-
-export type Product = {
-  id: string
-  name: string
-  slug: string
-  category: ProductCategory
-  price: number
-  originalPrice: number
-  currency: string
+  category: UnlockCategory
   description: string
-  shortDescription: string
-  images: string[]
-  modelPath: string | null
-  colours: FinishOption[]
-  materials: string[]
-  finishes: FinishOption[]
-  lightTemperatures: LightTemperature[]
-  brightnessLevels: number[]
-  dimensions: {
-    height: string
-    width: string
-    depth: string
-    weight: string
-  }
-  rating: number
-  reviewsCount: number
-  features: string[]
-  roomRecommendations: RoomType[]
-  inStock: boolean
-  isNew?: boolean
-  isPopular?: boolean
-  smartFeatures: string[]
-  energyUsage: string
-  warranty: string
-  deliveryEstimate: string
-  bulbStyle: string[]
-  cableColours: FinishOption[]
-  shadeColours: FinishOption[]
-  reviews: ProductReview[]
-  lampStyle: 'floor' | 'table' | 'pendant' | 'wall' | 'desk' | 'smart'
+  emoji: string
+  requirement: string
+  check: (garden: GardenState, entries: MoodEntry[]) => boolean
 }
 
-export type CartItem = {
-  productId: string
-  quantity: number
-  finishId: string
-  material: string
-  temperatureId: string
-  shadeColourId: string
-  cableColourId: string
-}
-
-export type WishlistItem = {
-  productId: string
-  finishId: string
-  temperatureId: string
-  addedAt: string
-}
-
-export type CompareItem = {
-  productId: string
-}
-
-export type MicPermissionState =
-  | 'idle'
-  | 'requesting'
-  | 'granted'
-  | 'denied'
-  | 'unavailable'
-
-export type ClapDetectorState =
-  | 'idle'
-  | 'listening'
-  | 'clap-detected'
-  | 'noisy'
-  | 'manual'
-
-export type SensitivityLevel = 'low' | 'medium' | 'high' | 'auto'
-
-export type CheckoutForm = {
-  email: string
-  phone: string
-  firstName: string
-  lastName: string
-  address: string
-  city: string
-  state: string
-  pincode: string
-  deliveryMethod: 'standard' | 'express' | 'scheduled'
-  cardName: string
-  cardNumber: string
-  expiry: string
-  cvv: string
-}
-
-export type Toast = {
-  id: string
-  message: string
-  type: 'success' | 'error' | 'info'
+export interface AppState {
+  user: User | null
+  entries: MoodEntry[]
+  garden: GardenState
+  settings: Settings
 }

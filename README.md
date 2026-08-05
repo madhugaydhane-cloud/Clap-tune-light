@@ -1,26 +1,33 @@
-# ClapLight
+# MoodBloom
 
-Premium immersive lamp e-commerce experience — **Clap. Glow. Experience.**
+A digital plant that grows with your mood — personal mood tracking and journaling with a calm garden experience.
 
 ## Stack
 
-- Vite + React + TypeScript
+- React + TypeScript + Vite
 - Tailwind CSS
-- React Three Fiber / Three.js / Drei
 - Framer Motion
-- Web Audio API clap detection
-- React Router
-- Local storage cart & wishlist
+- Lucide React
+- Recharts
+- LocalStorage (Supabase/Firebase-ready structure)
 
-## Run
+## Scripts
 
 ```bash
 npm install
 npm run dev
+npm run build
 ```
 
-## Key journey
+## Features
 
-Browse lamps → open a product → dark virtual room → allow microphone → clap → lamp turns on → tune brightness/temperature/room → customise → add to cart.
+- Onboarding with garden personalization
+- Daily mood check-in + optional journal/voice note
+- Animated SVG plant reactions
+- Optional breathing exercise for stressed moods
+- Mood history calendar
+- Weekly insights + mock AI reflection
+- Unlockable garden collection
+- Profile, settings, export, and reset
 
-Microphone audio is processed locally in the browser and is never recorded or uploaded. Manual On/Off and Spacebar controls are always available.
+Data stays on-device in LocalStorage for v1.
